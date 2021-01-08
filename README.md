@@ -1,4 +1,4 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a3d8a40d7133497caa11051eaac6f1a2)](https://www.codacy.com/manual/kai-morich/SimpleBluetoothTerminal?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kai-morich/SimpleBluetoothTerminal&amp;utm_campaign=Badge_Grade) [![Build status](https://build.appcenter.ms/v0.1/apps/cc3cf4e7-121c-44cd-a5c8-b77e3650124e/branches/alpha/badge)](https://appcenter.ms)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a3d8a40d7133497caa11051eaac6f1a2)](https://www.codacy.com/manual/lb-bushers/tvsdtw-android?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lb-bushers/tvsdtw-android&amp;utm_campaign=Badge_Grade) 
 
 # TV Station Debugging Tool Wireless for Android
 
@@ -9,8 +9,10 @@ For an overview on Android Bluetooth communication see
 
 This App implements RFCOMM connection to the well-known SPP UUID 00001101-0000-1000-8000-00805F9B34FB
 
-## Motivation
+### Build status
 
-I got various requests asking for help with Android development or source code for my 
-[Serial Bluetooth Terminal](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal) app.
-Here you find a simplified version of my app.
+| Track   | Status                                                                                                                                                                                                                                                           |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Production | [![Build status](https://build.appcenter.ms/v0.1/apps/cc3cf4e7-121c-44cd-a5c8-b77e3650124e/branches/production/badge)](https://appcenter.ms) |
+| Beta | [![Build status](https://build.appcenter.ms/v0.1/apps/cc3cf4e7-121c-44cd-a5c8-b77e3650124e/branches/beta/badge)](https://appcenter.ms) |
+| Alpha | [![Build status](https://build.appcenter.ms/v0.1/apps/cc3cf4e7-121c-44cd-a5c8-b77e3650124e/branches/alpha/badge)](https://appcenter.ms) |
