@@ -43,7 +43,7 @@ class SerialSocket(context: Context, device: BluetoothDevice) : Runnable {
         if (socket != null) {
             try {
                 socket!!.close()
-            } catch (e: Exception) {
+            } catch (e: IOException) {
                 Crashes.trackError(e)
             }
             socket = null

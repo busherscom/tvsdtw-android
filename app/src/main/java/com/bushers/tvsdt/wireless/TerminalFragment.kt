@@ -73,7 +73,7 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
     override fun onDetach() {
         try {
             activity!!.unbindService(this)
-        } catch (e: Exception) {
+        } catch (e: IllegalArgumentException) {
             Crashes.trackError(e)
         }
         super.onDetach()
