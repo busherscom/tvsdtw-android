@@ -13,6 +13,7 @@ import java.security.InvalidParameterException
 import java.util.*
 import java.util.concurrent.Executors
 
+
 class SerialSocket(context: Context, device: BluetoothDevice) : Runnable {
     private val disconnectBroadcastReceiver: BroadcastReceiver
     private val context: Context

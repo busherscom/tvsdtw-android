@@ -1,15 +1,21 @@
 package com.bushers.tvsdt.wireless
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentManager
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
+import com.microsoft.appcenter.crashes.WrapperSdkExceptionManager
+import com.microsoft.appcenter.crashes.ingestion.models.ErrorAttachmentLog
 import com.microsoft.appcenter.distribute.Distribute
+import java.io.ByteArrayOutputStream
 
 class MainActivity : AppCompatActivity(), FragmentManager.OnBackStackChangedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,5 +80,6 @@ class MainActivity : AppCompatActivity(), FragmentManager.OnBackStackChangedList
         Log.i(tag, "CODENAME: " + Build.VERSION.CODENAME)
         Log.i(tag, "RELEASE: " + Build.VERSION.RELEASE)
         Log.i(tag, "SDK_INT: " + Build.VERSION.SDK_INT)
+
     }
 }
