@@ -207,15 +207,16 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
         try {
             val msg: String
             val data: ByteArray?
+            val breaking = newline!!.toByteArray()
             if (hexEnabled) {
                 val sb = StringBuilder()
                 toHexString(sb, TextUtil.fromHexString(str))
-                toHexString(sb, newline!!.toByteArray())
+                toHexString(sb, breaking)
                 msg = sb.toString()
                 data = TextUtil.fromHexString(msg)
             } else {
                 msg = str
-                data = (str + newline).toByteArray()
+                data = str.plus(newline!!).toByteArray()
             }
 
             val spn = SpannableStringBuilder(
