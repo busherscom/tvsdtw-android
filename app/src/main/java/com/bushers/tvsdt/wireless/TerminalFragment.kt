@@ -55,7 +55,12 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
 
     override fun onStart() {
         super.onStart()
-        if (service != null) service!!.attach(this) else activity!!.startService(Intent(activity, SerialService::class.java)) // prevents service destroy on unbind from recreated activity caused by orientation change
+        if (service != null) service!!.attach(this) else activity!!.startService(
+            Intent(
+                activity,
+                SerialService::class.java
+            )
+        ) // prevents service destroy on unbind from recreated activity caused by orientation change
     }
 
     override fun onStop() {
@@ -64,10 +69,13 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
     }
 
 
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        activity!!.bindService(Intent(activity, SerialService::class.java), this, Context.BIND_AUTO_CREATE)
+        activity!!.bindService(
+            Intent(activity, SerialService::class.java),
+            this,
+            Context.BIND_AUTO_CREATE
+        )
     }
 
     override fun onDetach() {
@@ -103,10 +111,20 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
     /*
      * UI
      */
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_terminal, container, false)
-        receiveText = view.findViewById(R.id.receive_text) // TextView performance decreases with number of spans
-        receiveText?.setTextColor(ContextCompat.getColor(view.context, R.color.colorRecieveText)) // set as default color to reduce number of spans
+        receiveText =
+            view.findViewById(R.id.receive_text) // TextView performance decreases with number of spans
+        receiveText?.setTextColor(
+            ContextCompat.getColor(
+                view.context,
+                R.color.colorRecieveText
+            )
+        ) // set as default color to reduce number of spans
         receiveText?.movementMethod = ScrollingMovementMethod.getInstance()
         sendText = view.findViewById(R.id.send_text)
         hexWatcher = HexWatcher(sendText!!)
@@ -135,7 +153,10 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
                 val pos = newlineValues.indexOf(newline)
                 val builder = AlertDialog.Builder(activity)
                 builder.setTitle("Newline")
-                builder.setSingleChoiceItems(newlineNames, pos) { dialog: DialogInterface, item1: Int ->
+                builder.setSingleChoiceItems(
+                    newlineNames,
+                    pos
+                ) { dialog: DialogInterface, item1: Int ->
                     newline = newlineValues[item1]
                     dialog.dismiss()
                 }
@@ -197,11 +218,20 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
                 data = (str + newline).toByteArray()
             }
 
-            val spn = SpannableStringBuilder("""
+            val spn = SpannableStringBuilder(
+                """
     $msg
     
-    """.trimIndent())
-            spn.setSpan(ForegroundColorSpan(ContextCompat.getColor(activity?.applicationContext!!, R.color.colorSendText)), 0, spn.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+    """.trimIndent()
+            )
+            spn.setSpan(
+                ForegroundColorSpan(
+                    ContextCompat.getColor(
+                        activity?.applicationContext!!,
+                        R.color.colorSendText
+                    )
+                ), 0, spn.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
             receiveText!!.append(spn)
             service!!.write(data)
         } catch (e: Exception) {
@@ -230,11 +260,20 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
     }
 
     private fun status(str: String) {
-        val spn = SpannableStringBuilder("""
+        val spn = SpannableStringBuilder(
+            """
     $str
     
-    """.trimIndent())
-        spn.setSpan(ForegroundColorSpan(ContextCompat.getColor(activity?.applicationContext!!, R.color.colorStatusText)), 0, spn.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+    """.trimIndent()
+        )
+        spn.setSpan(
+            ForegroundColorSpan(
+                ContextCompat.getColor(
+                    activity?.applicationContext!!,
+                    R.color.colorStatusText
+                )
+            ), 0, spn.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
         receiveText!!.append(spn)
     }
 

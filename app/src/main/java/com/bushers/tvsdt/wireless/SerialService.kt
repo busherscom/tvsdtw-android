@@ -9,11 +9,11 @@ import android.app.PendingIntent.getBroadcast
 import android.app.Service
 import android.content.Intent
 import android.os.*
-
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.microsoft.appcenter.crashes.Crashes
 import java.io.IOException
+import java.lang.Thread.currentThread
 import java.util.*
 
 
@@ -81,7 +81,14 @@ class SerialService : Service(), SerialListener {
     }
 
     fun attach(listener: SerialListener) {
-        require(!(Looper.getMainLooper().thread !== Thread.currentThread())) { "not in main thread" }
+        try {
+            require(!(getMainLooper().thread !== currentThread())) {
+                "not in main thread"
+            }
+        } catch (e:  IllegalArgumentException) {
+            Crashes.trackError(e)
+        }
+
         cancelNotification()
         // use synchronized() to prevent new items in queue2
         // new items will not be added to queue1 because mainLooper.post and attach() run in main thread
@@ -116,39 +123,49 @@ class SerialService : Service(), SerialListener {
 
     private fun createNotification() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val nc = NotificationChannel(Constants.NOTIFICATION_CHANNEL, "Background service", NotificationManager.IMPORTANCE_LOW)
+            val nc = NotificationChannel(
+                Constants.NOTIFICATION_CHANNEL,
+                "Background service",
+                NotificationManager.IMPORTANCE_LOW
+            )
             nc.setShowBadge(false)
             val nm = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             nm.createNotificationChannel(nc)
         }
         val disconnectIntent = Intent()
-                .setAction(Constants.INTENT_ACTION_DISCONNECT)
+            .setAction(Constants.INTENT_ACTION_DISCONNECT)
 
         val restartIntent = Intent()
-                .setClassName(this, Constants.INTENT_CLASS_MAIN_ACTIVITY)
-                .setAction(Intent.ACTION_MAIN)
-                .addCategory(Intent.CATEGORY_LAUNCHER)
+            .setClassName(this, Constants.INTENT_CLASS_MAIN_ACTIVITY)
+            .setAction(Intent.ACTION_MAIN)
+            .addCategory(Intent.CATEGORY_LAUNCHER)
 
         val disconnectPendingIntent = getBroadcast(
-                this,
-                1,
-                disconnectIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+            this,
+            1,
+            disconnectIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT
         )
         val restartPendingIntent = getActivity(
-                this,
-                1,
-                restartIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+            this,
+            1,
+            restartIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT
         )
         val builder = NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL)
-                .setSmallIcon(R.drawable.ic_notification)
-                .setColor(ContextCompat.getColor(this, R.color.colorPrimary))
-                .setContentTitle(resources.getString(R.string.app_name))
-                .setContentText(if (socket != null) "Connected to " + socket!!.name else "Background Service")
-                .setContentIntent(restartPendingIntent)
-                .setOngoing(true)
-                .addAction(NotificationCompat.Action(R.drawable.ic_clear_white_24dp, "Disconnect", disconnectPendingIntent))
+            .setSmallIcon(R.drawable.ic_notification)
+            .setColor(ContextCompat.getColor(this, R.color.colorPrimary))
+            .setContentTitle(resources.getString(R.string.app_name))
+            .setContentText(if (socket != null) "Connected to " + socket!!.name else "Background Service")
+            .setContentIntent(restartPendingIntent)
+            .setOngoing(true)
+            .addAction(
+                NotificationCompat.Action(
+                    R.drawable.ic_clear_white_24dp,
+                    "Disconnect",
+                    disconnectPendingIntent
+                )
+            )
         // @drawable/ic_notification created with Android Studio -> New -> Image Asset using @color/colorPrimaryDark as background color
         // Android < API 21 does not support vectorDrawables in notifications, so both drawables used here, are created as .png instead of .xml
         val notification = builder.build()
