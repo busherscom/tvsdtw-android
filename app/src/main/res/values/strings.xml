@@ -2,4 +2,12 @@
     <string name="app_name">TVSDT Wireless</string>
     <string name="devices">Bluetooth Tools</string>
     <string name="app_description">TV Station Debugging Tool</string>
+    <string name="bluetooth_settings">Bluetooth settings</string>
+    <string name="clear">Clear</string>
+    <string name="newline">Newline</string>
+    <string name="hex_mode">HEX Mode</string>
+    <string name="sasd">TVSDT Wireless</string>
+    <string name="sadasd">TVSDT Wireless</string>
+    <string name="asdasd">TVSDT Wireless</string>
+    <string name="todo">TODO</string>
 </resources>
