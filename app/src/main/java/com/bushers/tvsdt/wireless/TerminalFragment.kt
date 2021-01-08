@@ -19,6 +19,7 @@ import com.bushers.tvsdt.wireless.TextUtil.HexWatcher
 import com.bushers.tvsdt.wireless.TextUtil.toCaretString
 import com.bushers.tvsdt.wireless.TextUtil.toHexString
 import com.microsoft.appcenter.crashes.Crashes
+import java.io.IOException
 
 @Suppress("TooManyFunctions")
 class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
@@ -188,7 +189,7 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
             connected = Connected.Pending
             val socket = SerialSocket(activity!!.applicationContext, device)
             service!!.connect(socket)
-        } catch (e: Exception) {
+        } catch (e: IOException) {
             Crashes.trackError(e)
             onSerialConnectError(e)
         }
