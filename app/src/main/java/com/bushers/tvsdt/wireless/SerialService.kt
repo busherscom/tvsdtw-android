@@ -21,6 +21,7 @@ import java.util.*
  * create notification and queue serial data while activity is not in the foreground
  * use listener chain: SerialSocket -> SerialService -> UI fragment
  */
+@Suppress("TooManyFunctions")
 class SerialService : Service(), SerialListener {
     internal inner class SerialBinder : Binder() {
         val service: SerialService
