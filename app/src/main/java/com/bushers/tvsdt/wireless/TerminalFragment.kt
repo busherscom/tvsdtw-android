@@ -241,23 +241,27 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
         }
     }
 
-    private fun receive(data: ByteArray?) {
-        if (hexEnabled) {
-            receiveText!!.append(data?.let { toHexString(it) } + '\n')
-        } else {
-            var msg = String(data!!)
-            if (newline == TextUtil.newline_crlf && msg.isNotEmpty()) {
+    private fun receive(data: ByteArray?) = if (hexEnabled)
+        receiveText!!.append(data?.let { toHexString(it) } + '\n')
+    else {
+        var msg = String(data!!)
+        if (newline == TextUtil.newline_crlf) {
+            if (msg.isNotEmpty()) {
                 // don't show CR as ^M if directly before LF
-                msg = msg.replace(TextUtil.newline_crlf, TextUtil.newline_lf)
+                msg.replace(TextUtil.newline_crlf, TextUtil.newline_lf).also { msg = it }
                 // special handling if CR and LF come in separate fragments
-                if (pendingNewline && msg[0] == '\n') {
-                    val edt = receiveText!!.editableText
-                    if (edt != null && edt.length > 1) edt.replace(edt.length - 2, edt.length, "")
-                }
+                if (pendingNewline)
+                    if (msg[0] == '\n') {
+                        val edt = receiveText!!.editableText
+                        if ((edt == null || edt.length <= 1).not()
+                        ) {
+                            edt.replace(edt.length - 2, edt.length, "")
+                        }
+                    }
                 pendingNewline = msg[msg.length - 1] == '\r'
             }
-            receiveText!!.append(toCaretString(msg, newline!!.isNotEmpty()))
         }
+        receiveText!!.append(toCaretString(msg, newline!!.isNotEmpty()))
     }
 
     private fun status(str: String) {
