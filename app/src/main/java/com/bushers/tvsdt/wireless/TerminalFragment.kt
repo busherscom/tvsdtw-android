@@ -132,7 +132,7 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
             R.id.newline -> {
                 val newlineNames = resources.getStringArray(R.array.newline_names)
                 val newlineValues = resources.getStringArray(R.array.newline_values)
-                val pos = listOf(*newlineValues).indexOf(newline)
+                val pos = newlineValues.indexOf(newline)
                 val builder = AlertDialog.Builder(activity)
                 builder.setTitle("Newline")
                 builder.setSingleChoiceItems(newlineNames, pos) { dialog: DialogInterface, item1: Int ->
