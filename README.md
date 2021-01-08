@@ -1,38 +1,16 @@
-# Visual Studio App Center Sample App for Android
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a3d8a40d7133497caa11051eaac6f1a2)](https://www.codacy.com/manual/kai-morich/SimpleBluetoothTerminal?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kai-morich/SimpleBluetoothTerminal&amp;utm_campaign=Badge_Grade)
 
-The Android application in this repository and its corresponding tutorials will help you quickly and easily onboard to Visual Studio App Center.
+# SimpleBluetoothTerminal
 
-## About this repository
+This Android app provides a line-oriented terminal / console for classic Bluetooth (2.x) devices implementing the Bluetooth Serial Port Profile (SPP)
 
-The App Center SDK modules are already integrated within the application. Simply follow the tutorials to learn how to use each service.
+For an overview on Android Bluetooth communication see 
+[Android Bluetooth Overview](https://developer.android.com/guide/topics/connectivity/bluetooth).
 
-### Build status (master branch)
+This App implements RFCOMM connection to the well-known SPP UUID 00001101-0000-1000-8000-00805F9B34FB
 
-| Build Service   | Status                                                                                                                                                                                                                                                           |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| App Center      | [![Build status](https://build.appcenter.ms/v0.1/apps/60df650c-1860-46ad-a0af-fdc190596377/branches/master/badge)](https://appcenter.ms)                                                                                                                         |
-| Azure Pipelines | [![Build Status](https://dev.azure.com/msmobilecenter/Mobile-Center/_apis/build/status/sampleapp/microsoft.appcenter-sampleapp-android?branchName=master)](https://dev.azure.com/msmobilecenter/Mobile-Center/_build/latest?definitionId=3725&branchName=master) |
+## Motivation
 
-## Tutorials
-
-First navigate to the **Getting Started** tutorial linked below. After following that tutorial, you can choose which App Center service to explore.
-
-## Contents
-
-| Tutorial                                                                                          | Description                                |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| [Getting Started](https://docs.microsoft.com/en-us/appcenter/quickstarts/android/getting-started) | Set up the app                             |
-| [Build](https://docs.microsoft.com/en-us/appcenter/quickstarts/android/build)                     | Build the app                              |
-| [Test](https://docs.microsoft.com/en-us/appcenter/quickstarts/android/test)                       | Run automated UI tests on real devices     |
-| [Distribute](https://docs.microsoft.com/en-us/appcenter/quickstarts/android/distribute)           | Distribute application to a group of users |
-| [Crashes](https://docs.microsoft.com/en-us/appcenter/quickstarts/android/crashes)                 | Monitor application crashes                |
-| [Analytics](https://docs.microsoft.com/en-us/appcenter/quickstarts/android/analytics)             | View user analytics                        |
-| [Push](https://docs.microsoft.com/en-us/appcenter/quickstarts/android/push)                       | Send push notifications to your app users  |
-
-### Added functionality
-
-Using Gradle you can pass environment variables into your Build Configuration and use them as variables within your application.
-
-For more information on how to do so, visit our docs here: [Build time environment variables using Gradle](https://docs.microsoft.com/en-us/appcenter/build/custom/variables/#buildgradle-for-android)
-
-And if you want to try it out, you can fork this repository and add your App Secret by adding the APPCENTER_APP_SECRET environment variable in hte App Center Build configuration.
+I got various requests asking for help with Android development or source code for my 
+[Serial Bluetooth Terminal](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal) app.
+Here you find a simplified version of my app.
