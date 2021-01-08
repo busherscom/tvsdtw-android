@@ -50,7 +50,7 @@ class SerialSocket(context: Context, device: BluetoothDevice) : Runnable {
         }
         try {
             context.unregisterReceiver(disconnectBroadcastReceiver)
-        } catch (e: Exception) {
+        } catch (e: IllegalArgumentException) {
             Crashes.trackError(e)
         }
     }
