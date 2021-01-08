@@ -1,6 +1,5 @@
 package com.bushers.tvsdt.wireless
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.bluetooth.BluetoothAdapter
 import android.content.*
@@ -21,6 +20,7 @@ import com.bushers.tvsdt.wireless.TextUtil.toCaretString
 import com.bushers.tvsdt.wireless.TextUtil.toHexString
 import com.microsoft.appcenter.crashes.Crashes
 
+@Suppress("TooManyFunctions")
 class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
     private enum class Connected {
         False, Pending, True
