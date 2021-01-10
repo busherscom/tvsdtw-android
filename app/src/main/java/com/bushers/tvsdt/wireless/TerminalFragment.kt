@@ -4,7 +4,9 @@ import android.app.AlertDialog
 import android.bluetooth.BluetoothAdapter
 import android.content.*
 import android.os.Bundle
+import android.os.Handler
 import android.os.IBinder
+import android.os.Looper
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.method.ScrollingMovementMethod
@@ -18,6 +20,7 @@ import com.bushers.tvsdt.wireless.SerialService.SerialBinder
 import com.bushers.tvsdt.wireless.TextUtil.HexWatcher
 import com.bushers.tvsdt.wireless.TextUtil.toCaretString
 import com.bushers.tvsdt.wireless.TextUtil.toHexString
+import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 import java.io.IOException
 
@@ -37,6 +40,7 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
     private var hexEnabled = false
     private var pendingNewline = false
     private var newline: String? = TextUtil.newline_crlf
+    private var esc = "\u001B"
 
     /*
      * Lifecycle
@@ -134,6 +138,96 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
         sendText?.hint = if (hexEnabled) "HEX mode" else ""
         val sendBtn = view.findViewById<View>(R.id.send_btn)
         sendBtn.setOnClickListener { send(sendText?.text.toString()) }
+
+        val keyAccessEnter = view.findViewById<View>(R.id.key_access_1)
+        val keyAccessEsc = view.findViewById<View>(R.id.key_access_2)
+        val bootLogo = view.findViewById<View>(R.id.bootlogo)
+        val destroyLogo = view.findViewById<View>(R.id.destroy_logo)
+        val panelInit = view.findViewById<View>(R.id.panel_init)
+        val usbstart = view.findViewById<View>(R.id.usbstart)
+        val restoreBackup = view.findViewById<View>(R.id.restore_backup)
+        val audioPreinit = view.findViewById<View>(R.id.audio_preinit)
+        val custar = view.findViewById<View>(R.id.custar)
+        val mmcinfo = view.findViewById<View>(R.id.mmcinfo)
+        val reset = view.findViewById<View>(R.id.reset)
+        val mirrorOnOne = view.findViewById<View>(R.id.mirror_on_1)
+        val mirrorOnTwo = view.findViewById<View>(R.id.mirror_on_2)
+
+        destroyLogo.setOnClickListener {
+            sendCommand("destroy_logo")
+            Analytics.trackEvent("OnClick Logo Off")
+        }
+        bootLogo.setOnClickListener {
+            sendCommand("bootlogo")
+            Analytics.trackEvent("OnClick Logo On")
+        }
+        panelInit.setOnClickListener {
+            sendCommand("panel_init")
+            Analytics.trackEvent("OnClick Panel Init")
+        }
+        usbstart.setOnClickListener {
+            sendCommand("usbstart 0")
+            sendCommand("emmcbin 0")
+            Analytics.trackEvent("OnClick USB Start")
+        }
+        restoreBackup.setOnClickListener {
+            sendCommand("restore_backup")
+            Analytics.trackEvent("OnClick Restore Backup")
+        }
+        audioPreinit.setOnClickListener {
+            sendCommand("audio_preinit")
+            sendCommand("bootmusic")
+            Analytics.trackEvent("OnClick Sound Tests")
+        }
+        custar.setOnClickListener {
+            sendCommand("custar")
+            Analytics.trackEvent("OnClick custar")
+        }
+        mmcinfo.setOnClickListener {
+            sendCommand("mmcinfo")
+            Analytics.trackEvent("OnClick MMC Info")
+        }
+        reset.setOnClickListener {
+            sendCommand("reset")
+            Analytics.trackEvent("OnClick Reset")
+        }
+        mirrorOnOne.setOnClickListener {
+            sendCommand("env edit MIRROR_ON")
+            sendCommand("0")
+            sendCommand("save")
+            Analytics.trackEvent("OnClick Sound Tests")
+        }
+        mirrorOnTwo.setOnClickListener {
+            sendCommand("env edit MIRROR_ON")
+            sendCommand("1")
+            sendCommand("save")
+            Analytics.trackEvent("OnClick Sound Tests")
+        }
+        keyAccessEnter.setOnClickListener {
+            try {
+                for (i in 5000 downTo 0 step 100) {
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        sendCommand(newline!!)
+                    }, i.toLong())
+                }
+            } catch (e: Exception) {
+                Crashes.trackError(e)
+            }
+            Analytics.trackEvent("OnClick Access Key")
+        }
+
+        keyAccessEsc.setOnClickListener {
+            try {
+                for (i in 5000 downTo 0 step 100) {
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        sendCommand(esc)
+                    }, i.toLong())
+                }
+            } catch (e: Exception) {
+                Crashes.trackError(e)
+            }
+            Analytics.trackEvent("OnClick Access Key")
+        }
         return view
     }
 
@@ -198,6 +292,20 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
     private fun disconnect() {
         connected = Connected.False
         service!!.disconnect()
+    }
+
+    private fun sendCommand(str: String) {
+        if (connected != Connected.True) {
+            Toast.makeText(activity, "not connected", Toast.LENGTH_SHORT).show()
+            return
+        }
+        try {
+            val data = (str + newline).toByteArray()
+            service!!.write(data)
+        } catch (e: Exception) {
+            Crashes.trackError(e)
+            onSerialIoError(e)
+        }
     }
 
     private fun send(str: String) {

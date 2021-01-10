@@ -6,8 +6,19 @@
     <string name="clear">Clear</string>
     <string name="newline">Newline</string>
     <string name="hex_mode">HEX Mode</string>
-    <string name="sasd">TVSDT Wireless</string>
-    <string name="sadasd">TVSDT Wireless</string>
-    <string name="asdasd">TVSDT Wireless</string>
+    <string name="bootlogo">LOGO ON</string>
+    <string name="destroy_logo">LOGO OFF</string>
+    <string name="panel_init">FORCE BACKLIGHT</string>
+    <string name="usbstart">BACKUP TO USB</string>
+    <string name="restore_backup">RESTORE BACKUP</string>
+    <string name="audio_preinit">DIAGNOSE SOUND</string>
+    <string name="custar">FIRMWARE UPGRADE</string>
+    <string name="mmcinfo">MEMORY INFORMATION</string>
+    <string name="reset">RESET</string>
     <string name="todo">TODO</string>
+    <string name="mirror_on_1">PANEL INVERTER 1</string>
+    <string name="mirror_on_2">PANEL INVERTER 2</string>
+    <string name="key_access_1">KEY ACCESS 1</string>
+    <string name="key_access_2">KEY ACCESS 2</string>
+    <string name="contact">WhatsApp +573017578191 by Eng. Luis Bustamante</string>
 </resources>
