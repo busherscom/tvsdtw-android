@@ -1,12 +1,13 @@
 package com.bushers.tvsdt.wireless
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.bluetooth.BluetoothAdapter
 import android.content.*
-import android.os.Bundle
-import android.os.Handler
-import android.os.IBinder
-import android.os.Looper
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
+import android.net.Uri
+import android.os.*
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.method.ScrollingMovementMethod
@@ -14,7 +15,9 @@ import android.text.style.ForegroundColorSpan
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.bushers.tvsdt.wireless.SerialService.SerialBinder
 import com.bushers.tvsdt.wireless.TextUtil.HexWatcher
@@ -22,7 +25,10 @@ import com.bushers.tvsdt.wireless.TextUtil.toCaretString
 import com.bushers.tvsdt.wireless.TextUtil.toHexString
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
+import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
+
 
 @Suppress("TooManyFunctions")
 class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
@@ -264,6 +270,21 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
                 hexWatcher!!.enable(hexEnabled)
                 sendText!!.hint = if (hexEnabled) "HEX mode" else ""
                 item.isChecked = hexEnabled
+                true
+            }
+            R.id.save -> {
+                try {
+                    val sendIntent: Intent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(Intent.EXTRA_TEXT, receiveText!!.text.toString())
+                        type = "text/plain"
+                    }
+
+                    val shareIntent = Intent.createChooser(sendIntent, null)
+                    startActivity(shareIntent)
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
                 true
             }
             else -> {

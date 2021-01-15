@@ -15,4 +15,9 @@
         android:checkable="true"
         android:title="@string/hex_mode"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/save"
+        android:title="@string/share"
+        app:showAsAction="never" />
+
 </menu>
