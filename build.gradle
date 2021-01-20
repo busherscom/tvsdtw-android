@@ -1,6 +1,6 @@
 buildscript {
-    ext.kotlin_version = '1.4.30-RC'
-    ext.dokka_version = '1.4.20.2-dev-59'
+    ext.kotlin_version = '1.4.30-M1'
+    ext.dokka_version = '1.4.20'
     repositories {
         gradlePluginPortal()
         google()
@@ -9,7 +9,7 @@ buildscript {
         maven { url 'https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.android.tools.build:gradle:4.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:${dokka_version}"
     }
@@ -27,4 +27,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
