@@ -19,6 +19,7 @@ android {
         minSdkVersion 21
         vectorDrawables.useSupportLibrary true
         multiDexEnabled true
+
         applicationId "com.bushers.tvsdt.wireless"
         versionCode 1
         versionName "1.0"
@@ -44,10 +45,12 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            zipAlignEnabled false
         }
         debug {
             minifyEnabled false
             debuggable true
+            zipAlignEnabled false
         }
     }
     testOptions {
