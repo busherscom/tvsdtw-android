@@ -4,8 +4,6 @@ import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.os.Bundle
 import android.provider.Settings
 import android.view.*
@@ -15,9 +13,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.ListFragment
 import com.microsoft.appcenter.analytics.Analytics
-import com.microsoft.appcenter.crashes.WrapperSdkExceptionManager
-import com.microsoft.appcenter.crashes.ingestion.models.ErrorAttachmentLog
-import java.io.ByteArrayOutputStream
 import java.util.*
 
 

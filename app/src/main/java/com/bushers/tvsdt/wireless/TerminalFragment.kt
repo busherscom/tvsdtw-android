@@ -1,13 +1,12 @@
 package com.bushers.tvsdt.wireless
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.bluetooth.BluetoothAdapter
 import android.content.*
-import android.content.pm.PackageManager
-import android.content.pm.ResolveInfo
-import android.net.Uri
-import android.os.*
+import android.os.Bundle
+import android.os.Handler
+import android.os.IBinder
+import android.os.Looper
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.method.ScrollingMovementMethod
@@ -15,9 +14,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.bushers.tvsdt.wireless.SerialService.SerialBinder
 import com.bushers.tvsdt.wireless.TextUtil.HexWatcher
@@ -25,8 +22,6 @@ import com.bushers.tvsdt.wireless.TextUtil.toCaretString
 import com.bushers.tvsdt.wireless.TextUtil.toHexString
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
-import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
 
 
