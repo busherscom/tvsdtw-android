@@ -6,20 +6,118 @@
     <string name="clear">Clear</string>
     <string name="newline">Newline</string>
     <string name="hex_mode">HEX Mode</string>
-    <string name="bootlogo">LOGO ON</string>
-    <string name="destroy_logo">LOGO OFF</string>
-    <string name="panel_init">FORCE BACKLIGHT</string>
-    <string name="usbstart">BACKUP TO USB</string>
-    <string name="restore_backup">RESTORE BACKUP</string>
-    <string name="audio_preinit">DIAGNOSE SOUND</string>
-    <string name="custar">FIRMWARE UPGRADE</string>
-    <string name="mmcinfo">MEMORY INFORMATION</string>
-    <string name="reset">RESET</string>
-    <string name="todo">TODO</string>
-    <string name="mirror_on_1">PANEL INVERTER 1</string>
-    <string name="mirror_on_2">PANEL INVERTER 2</string>
-    <string name="key_access_1">KEY ACCESS 1</string>
-    <string name="key_access_2">KEY ACCESS 2</string>
     <string name="contact">WhatsApp +573017578191 by Eng. Luis Bustamante</string>
     <string name="share">Share output</string>
+    <string name="mstar">MStar</string>
+    <string name="realtek">Realtek</string>
+    <string name="nugget">Nugget</string>
+    <string name="sony">Sony</string>
+    <string name="panasonic">Panasonic</string>
+    <string name="hisense_mt5882">Hisense-MT5882</string>
+    <string name="todo">TODO</string>
+
+
+
+    <string name="mstar_key_access">KEY ACCESS</string>
+    <string name="mstar_force_backlight">FORCE BACKLIGHT</string>
+    <string name="mstar_bootlogo">BOOTLOGO</string>
+    <string name="mstar_stop_logo">STOP LOGO</string>
+    <string name="mstar_delete_logo">DELETE LOGO</string>
+    <string name="mstar_backup_to_usb">BACKUP TO USB</string>
+    <string name="mstar_restore_backup_">RESTORE BACKUP </string>
+    <string name="mstar_diagnose_sound">DIAGNOSE SOUND</string>
+    <string name="mstar_firmware_upgrade">FIRMWARE UPGRADE</string>
+    <string name="mstar_memory_information">MEMORY INFORMATION</string>
+    <string name="mstar_panel_inverter_1">PANEL INVERTER 1</string>
+    <string name="mstar_panel_inverter_2">PANEL INVERTER 2</string>
+    <string name="mstar_reset">RESET</string>
+
+
+
+    <string name="realtek_echo">ECHO</string>
+    <string name="realtek_key_access_realtek">KEY ACCESS REALTEK</string>
+    <string name="realtek_enable_uartart">ENABLE UARTART</string>
+    <string name="realtek_assign_panelanel_and_mirror">ASSIGN PANELANEL AND MIRROR</string>
+    <string name="realtek_emmc_infoo">EMMC INFOO</string>
+    <string name="realtek_emmc_statustus">EMMC STATUSTUS</string>
+    <string name="realtek_report_off_emmc">REPORT OFF EMMC</string>
+    <string name="realtek_test_all_devices">TEST ALL DEVICES</string>
+    <string name="realtek_firmware_upgrade_upgrade">FIRMWARE UPGRADE UPGRADE</string>
+    <string name="realtek_test_usb_ports">TEST USB PORTS</string>
+    <string name="realtek_disable_wachdogwachdog">DISABLE WACHDOGWACHDOG</string>
+    <string name="realtek_assign_remoteemote">ASSIGN REMOTEEMOTE</string>
+    <string name="realtek_reset_mainin">RESET MAININ</string>
+
+
+
+
+    <string name="hisense_key_access_1">KEY ACCESS 1</string>
+    <string name="hisense_usb_test">USB TEST</string>
+    <string name="hisense_firmware_upgrade">FIRMWARE UPGRADE</string>
+    <string name="hisense_reset_main_board">RESET MAIN BOARD</string>
+    <string name="hisense_test_de_main_board">TEST DE MAIN BOARD</string>
+    <string name="hisense_information_emmc">INFORMATION eMMC</string>
+    <string name="hisense_upgrade_linux_">UPGRADE LINUX </string>
+    <string name="hisense_version_main">VERSION MAIN</string>
+    <string name="hisense_memory_asiggn_">MEMORY ASIGGN </string>
+    <string name="hisense_partition_info">PARTITION INFO</string>
+    <string name="hisense_key_access_2">KEY ACCESS 2</string>
+    <string name="hisense_firmware_upgrade_2">FIRMWARE UPGRADE 2</string>
+    <string name="hisense_reinicio">REINICIO</string>
+    <string name="hisense_show_logo">SHOW LOGO</string>
+    <string name="hisense_identification_chipset">IDENTIFICATION CHIPSET</string>
+    <string name="hisense_test_memory">TEST MEMORY</string>
+    <string name="hisense_emmc_reference">EMMC REFERENCE</string>
+    <string name="hisense_info_emmc">INFO EMMC</string>
+    <string name="hisense_device_info">DEVICE INFO</string>
+
+
+
+
+
+    <string name="nugget_key_access">KEY ACCESS</string>
+    <string name="nugget_force_backlight">FORCE BACKLIGHT</string>
+    <string name="nugget_showlogo">SHOWLOGO</string>
+    <string name="nugget_stop_logo">STOP LOGO</string>
+    <string name="nugget_backup_to">BACKUP TO</string>
+    <string name="nugget_restore_backup">RESTORE BACKUP</string>
+    <string name="nugget_firmware_upgrade_1">FIRMWARE UPGRADE 1</string>
+    <string name="nugget_firmware_upgrade_2">FIRMWARE UPGRADE 2</string>
+    <string name="nugget_reset_main">RESET MAIN</string>
+    <string name="nugget_reset_2_mstar">RESET 2 MSTAR</string>
+    <string name="nugget_reset_3_securebootcmd">RESET 3 SECUREBOOTCMD</string>
+    <string name="nugget_test_of">TEST OF</string>
+    <string name="nugget_view_all">VIEW ALL</string>
+    <string name="nugget_copy_spi">COPY SPI</string>
+    <string name="nugget_test_usb">TEST USB</string>
+
+
+
+
+
+    <string name="panasonic_key_access">KEY ACCESS</string>
+    <string name="panasonic_force_backlight">FORCE BACKLIGHT</string>
+    <string name="panasonic_diagnose_sound">DIAGNOSE SOUND</string>
+    <string name="panasonic_bootlogo">BOOTLOGO</string>
+    <string name="panasonic_delete_logo">DELETE LOGO</string>
+    <string name="panasonic_backup_to_usb">BACKUP TO USB</string>
+    <string name="panasonic_restore_backup_">RESTORE BACKUP </string>
+    <string name="panasonic_copy_spi">COPY SPI</string>
+    <string name="panasonic_restore_spi">RESTORE SPI</string>
+    <string name="panasonic_memory_emmc_information">MEMORY eMMC INFORMATION</string>
+    <string name="panasonic_memory_test">MEMORY TEST</string>
+    <string name="panasonic_verify_status_and_firmware">VERIFY STATUS AND FIRMWARE</string>
+    <string name="panasonic_record_mac">RECORD MAC</string>
+    <string name="panasonic_test_panel_and_sound">TEST PANEL AND SOUND</string>
+    <string name="panasonic_test_video">TEST VIDEO</string>
+    <string name="panasonic_assign_panel_4k_2k">ASSIGN PANEL 4K_2K</string>
+    <string name="panasonic_assign_panel_full_hd_1">ASSIGN PANEL FULL HD 1</string>
+    <string name="panasonic_assign_panel_full_hd_2">ASSIGN PANEL FULL HD 2</string>
+    <string name="panasonic_firmware_upgrade">FIRMWARE UPGRADE</string>
+    <string name="panasonic_test_usb_ports">TEST USB PORTS</string>
+    <string name="panasonic_maininfo">MAININFO</string>
+    <string name="panasonic_reset_1">RESET 1</string>
+    <string name="panasonic_reset_2">RESET 2</string>
+
+
 </resources>

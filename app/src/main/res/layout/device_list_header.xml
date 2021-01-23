@@ -6,6 +6,16 @@
     android:background="?android:attr/listDivider"
     android:orientation="vertical">
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:gravity="center"
+
+        android:text="@string/contact"
+         />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,4 +24,5 @@
         android:gravity="center"
         android:text="@string/devices"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
 </LinearLayout>
