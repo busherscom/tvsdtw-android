@@ -177,13 +177,13 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
             )
         ) // set as default color to reduce number of spans
         receiveText?.movementMethod = ScrollingMovementMethod.getInstance()
-        //sendText = view.findViewById(R.id.send_text)
-        //hexWatcher = HexWatcher(sendText!!)
-        //hexWatcher!!.enable(hexEnabled)
-        //sendText?.addTextChangedListener(hexWatcher)
-        //sendText?.hint = if (hexEnabled) "HEX mode" else ""
-        // val sendBtn = view.findViewById<View>(R.id.send_btn)
-        // sendBtn.setOnClick CMD Listener { send(sendText?.text.toString()) }
+        sendText = view.findViewById(R.id.send_text)
+        hexWatcher = HexWatcher(sendText!!)
+        hexWatcher!!.enable(hexEnabled)
+        sendText?.addTextChangedListener(hexWatcher)
+        sendText?.hint = if (hexEnabled) "HEX mode" else ""
+        val sendBtn = view.findViewById<View>(R.id.send_btn)
+        sendBtn.setOnClickListener { send(sendText?.text.toString()) }
 
 
         val mstarKeyAccess = view.findViewById<View>(R.id.mstar_key_access)
@@ -706,7 +706,7 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_terminal, menu)
-        // menu.findItem(R.id.hex).isChecked = hexEnabled
+        menu.findItem(R.id.hex).isChecked = hexEnabled
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -731,7 +731,6 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
                 // builder.create().show()
                 true
             }
-            /*
             R.id.hex -> {
                 hexEnabled = !hexEnabled
                 sendText!!.text = ""
@@ -740,7 +739,6 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
                 item.isChecked = hexEnabled
                 true
             }
-             */
             R.id.save -> {
                 try {
                     val sendIntent: Intent = Intent().apply {

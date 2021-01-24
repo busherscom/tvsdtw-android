@@ -10,13 +10,11 @@
         android:id="@+id/newline"
         android:title="@string/newline"
         app:showAsAction="never" />
-    <!--
     <item
         android:id="@+id/hex"
         android:checkable="true"
         android:title="@string/hex_mode"
         app:showAsAction="never" />
-        -->
     <item
         android:id="@+id/save"
         android:title="@string/share"
