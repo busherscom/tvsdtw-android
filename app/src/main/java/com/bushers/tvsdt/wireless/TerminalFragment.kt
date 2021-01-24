@@ -706,7 +706,7 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_terminal, menu)
-        menu.findItem(R.id.hex).isChecked = hexEnabled
+        // menu.findItem(R.id.hex).isChecked = hexEnabled
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -731,6 +731,7 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
                 builder.create().show()
                 true
             }
+            /*
             R.id.hex -> {
                 hexEnabled = !hexEnabled
                 sendText!!.text = ""
@@ -739,6 +740,7 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
                 item.isChecked = hexEnabled
                 true
             }
+             */
             R.id.save -> {
                 try {
                     val sendIntent: Intent = Intent().apply {
