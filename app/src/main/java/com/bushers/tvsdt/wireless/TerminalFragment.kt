@@ -784,7 +784,7 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
 
     private fun sendCommand(str: String) {
         if (connected != Connected.True) {
-            Toast.makeText(activity, "not connected", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity?.applicationContext!!, R.string.not_connection, Toast.LENGTH_SHORT).show()
             return
         }
         try {
@@ -798,7 +798,7 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
 
     private fun send(str: String) {
         if (connected != Connected.True) {
-            Toast.makeText(activity, "not connected", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity?.applicationContext!!, R.string.not_connection, Toast.LENGTH_SHORT).show()
             return
         }
         try {

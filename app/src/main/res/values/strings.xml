@@ -118,6 +118,7 @@
     <string name="panasonic_maininfo">MAININFO</string>
     <string name="panasonic_reset_1">RESET 1</string>
     <string name="panasonic_reset_2">RESET 2</string>
+    <string name="not_connection">Not connected</string>
 
 
 </resources>
