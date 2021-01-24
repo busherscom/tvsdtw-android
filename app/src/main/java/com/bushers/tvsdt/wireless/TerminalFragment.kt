@@ -728,7 +728,7 @@ class TerminalFragment : Fragment(), ServiceConnection, SerialListener {
                     newline = newlineValues[item1]
                     dialog.dismiss()
                 }
-                builder.create().show()
+                // builder.create().show()
                 true
             }
             /*
